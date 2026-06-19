@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lijap3scrayp.github.io/sitehome-hth-com-cn/sitemap.xml
