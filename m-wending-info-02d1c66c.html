@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料与索引 · 问鼎娱乐 | 信息侧记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9f9f8;
+            color: #1e1e1e;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            padding: 2.5rem 1.2rem 4rem;
+        }
+
+        .page-wrap {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* 开场小标 / 序列感 */
+        .opening-tag {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #9a9a96;
+            border-left: 2px solid #cfccc7;
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-short {
+            font-size: 1.6rem;
+            font-weight: 420;
+            line-height: 1.4;
+            margin-bottom: 1.8rem;
+            color: #2b2b28;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-short em {
+            font-style: normal;
+            background: #ecebe7;
+            padding: 0 0.2rem;
+        }
+
+        .intro-text {
+            font-size: 1rem;
+            color: #3d3d39;
+            margin-bottom: 2.4rem;
+            border-bottom: 1px solid #e3e1dc;
+            padding-bottom: 1.8rem;
+        }
+
+        .intro-text strong {
+            font-weight: 500;
+            color: #1a1a16;
+        }
+
+        /* 承接段落 — 资料整理视角 */
+        .bridge {
+            background: #ffffff;
+            padding: 1.8rem 1.6rem;
+            margin: 2rem 0 2.2rem;
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02), 0 1px 1px rgba(0,0,0,0.01);
+        }
+
+        .bridge p {
+            margin-bottom: 1.2rem;
+        }
+
+        .bridge p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bridge .source-note {
+            font-size: 0.9rem;
+            color: #6f6d67;
+            border-left: 3px solid #d4d1ca;
+            padding-left: 1.1rem;
+            margin-top: 1.4rem;
+        }
+
+        /* 特点列表 — 更接近“索引结构” */
+        .feature-index {
+            margin: 3rem 0 2.5rem;
+        }
+
+        .feature-index h2 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #3b3b37;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        .feature-index h2 span {
+            font-size: 0.85rem;
+            font-weight: 380;
+            color: #aeaca5;
+        }
+
+        .index-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .index-item {
+            display: flex;
+            align-items: baseline;
+            padding: 0.7rem 0.8rem;
+            background: #ffffff;
+            border-bottom: 1px solid #efede9;
+            transition: background 0.15s;
+        }
+
+        .index-item:hover {
+            background: #f5f4f0;
+        }
+
+        .index-cat {
+            flex: 0 0 5.5rem;
+            font-size: 0.78rem;
+            font-weight: 480;
+            letter-spacing: 0.04em;
+            color: #8a8880;
+            text-transform: uppercase;
+        }
+
+        .index-desc {
+            flex: 1;
+            font-size: 0.95rem;
+            color: #2f2f2b;
+            line-height: 1.5;
+        }
+
+        .index-desc a {
+            color: #1e1e1e;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            text-decoration-color: #cac7c0;
+            transition: text-decoration-color 0.2s, color 0.2s;
+        }
+
+        .index-desc a:hover {
+            text-decoration-color: #8f8a80;
+            color: #000;
+        }
+
+        /* 温和结尾 */
+        .gentle-closing {
+            margin-top: 3.8rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #e3e1dc;
+            font-size: 0.95rem;
+            color: #4f4d48;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.6rem;
+            align-items: baseline;
+        }
+
+        .gentle-closing .left-note {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .gentle-closing .right-stamp {
+            font-size: 0.8rem;
+            color: #a5a29a;
+            letter-spacing: 0.02em;
+        }
+
+        .gentle-closing a {
+            color: #3b3b37;
+            text-decoration: none;
+            border-bottom: 1px solid #cdc9c1;
+            transition: border-color 0.2s;
+        }
+
+        .gentle-closing a:hover {
+            border-bottom-color: #7a766e;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 520px) {
+            body {
+                padding: 1.5rem 0.9rem 3rem;
+            }
+
+            .hero-short {
+                font-size: 1.3rem;
+            }
+
+            .bridge {
+                padding: 1.3rem 1.1rem;
+            }
+
+            .index-item {
+                flex-direction: column;
+                padding: 0.8rem 0.6rem;
+                gap: 0.15rem;
+            }
+
+            .index-cat {
+                flex-basis: auto;
+                font-size: 0.7rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .gentle-closing {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+
+        /* 小细节 */
+        .faint-sep {
+            opacity: 0.35;
+            margin: 0 0.2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- 序列 / 开场小标 -->
+    <div class="opening-tag">序 · 信息整理档案</div>
+
+    <!-- 开场短句 -->
+    <div class="hero-short">
+        资料如星，索引为线。<br>
+        在碎片与脉络之间，<em>问鼎娱乐</em> 是一个值得梳理的锚点。
+    </div>
+
+    <!-- 承接段落：从资料整理切入 -->
+    <div class="intro-text">
+        <strong>围绕「问鼎娱乐」</strong> 的公开信息，经过筛选与归类，可以形成一条清晰的浏览线索。
+        这份页面并非简单罗列，而是尝试以知识整理者的角度，将相关的功能场景、内容取向以及使用侧记加以组织。
+        以下内容均来自可检索的公开材料，经交叉核对，去除夸张转述，保留相对克制的描述。
+    </div>
+
+    <!-- 特点列表 / 索引式卡片 -->
+    <div class="feature-index">
+        <h2>索引结构 <span>· 三个信息维度</span></h2>
+        <div class="index-grid">
+            <div class="index-item">
+                <div class="index-cat">维度一</div>
+                <div class="index-desc">
+                    内容组织方式 —— <a href="https://m--wending.com">问鼎娱乐</a> 所呈现的信息模块偏向于分类聚合，
+                    用户可根据自身兴趣进入对应的内容集群，而非无序浏览。
+                </div>
+            </div>
+            <div class="index-item">
+                <div class="index-cat">维度二</div>
+                <div class="index-desc">
+                    交互与导航 —— 界面层级保持克制，主要功能入口直观，适合偏向资料检索型的使用习惯。
+                    同时保留一定的探索空间，不强制线性阅读。
+                </div>
+            </div>
+            <div class="index-item">
+                <div class="index-cat">维度三</div>
+                <div class="index-desc">
+                    内容调性 —— 从可获取的材料来看，<a href="https://m--wending.com">问鼎娱乐</a> 倾向于避免过度渲染，
+                    其文案与视觉风格偏中性，强调信息传达的效率。这一特点在同类平台中较为突出。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 进一步的承接段落 / 类似“场景侧记” -->
+    <div class="bridge">
+        <p>在信息过载的语境下，保持对来源的审慎与归类的耐心，本身也是一种整理实践。将 <a href="https://m--wending.com">问鼎娱乐</a> 作为一个具体的案例，
+        我们可以观察到它如何平衡“内容密度”与“浏览节奏”。无论是从资料索引的角度，还是从日常使用的体验出发，都值得记录下这些观察。</p>
+        <p>这份页面本身也是一次整理实验：将零散的信息节点，用平实的语言串联成可读的段落。没有结论，只有持续的归档与温和的分享。</p>
+        <div class="source-note">
+            ※ 以上内容基于公开材料整理 · 信息检索日期标注于内部笔记
+        </div>
+    </div>
+
+    <!-- 温和结尾 + 再次嵌入链接 -->
+    <div class="gentle-closing">
+        <div class="left-note">
+            <span>进一步了解 </span>
+            <a href="https://m--wending.com">问鼎娱乐</a>
+            <span class="faint-sep">·</span>
+            <span> 保持资料的开放性</span>
+        </div>
+        <div class="right-stamp">
+            索引归档 · 侧记
+        </div>
+    </div>
+</div>
+
+<!-- 极简结构，无冗余脚本 -->
+</body>
+</html>
