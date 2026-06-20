@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日常查询 · 对照 · 延伸阅读 — jiuyou</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fde8cd 0%, #f7d4b0 40%, #f0c49a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.2rem;
+        }
+        .page-wrap {
+            max-width: 1100px;
+            width: 100%;
+        }
+        /* 主视觉卡片 —— 暖色渐变 + 柔光 */
+        .hero-card {
+            background: #fffffffa;
+            backdrop-filter: blur(2px);
+            border-radius: 3.5rem 1.5rem 3.5rem 1.5rem;
+            padding: 2.8rem 2.5rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 20px 40px -12px rgba(160, 100, 60, 0.25),
+                        0 8px 16px -6px rgba(120, 70, 30, 0.08);
+            transition: box-shadow 0.2s ease;
+        }
+        .hero-card h1 {
+            font-size: 2.6rem;
+            font-weight: 480;
+            letter-spacing: -0.01em;
+            color: #4d2e1b;
+            line-height: 1.2;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.2rem 0.6rem;
+        }
+        .hero-card h1 .small-note {
+            font-size: 1.1rem;
+            font-weight: 340;
+            color: #7e5b3f;
+            background: #f3e3d2;
+            padding: 0.1rem 0.9rem;
+            border-radius: 40px;
+            display: inline-block;
+            letter-spacing: 0.02em;
+        }
+        .hero-card .sub {
+            font-size: 1.15rem;
+            color: #5b3c26;
+            line-height: 1.6;
+            margin-top: 0.4rem;
+            max-width: 85%;
+            border-left: 3px solid #dbb594;
+            padding-left: 1.1rem;
+        }
+        /* 介绍段 —— 日常查询、对照、延伸阅读 */
+        .intro-text {
+            background: #fffbf7;
+            border-radius: 2rem;
+            padding: 1.6rem 2rem;
+            margin: 2.2rem 0 1.8rem 0;
+            box-shadow: 0 6px 14px rgba(100, 60, 25, 0.06);
+            color: #3d2a1a;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        .intro-text p {
+            margin-bottom: 0.9rem;
+        }
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+        .intro-text a {
+            color: #965e34;
+            text-decoration: none;
+            font-weight: 470;
+            border-bottom: 1px dashed #dbb594;
+            transition: border 0.15s, background 0.15s;
+            padding: 0 0.1rem;
+        }
+        .intro-text a:hover {
+            border-bottom-style: solid;
+            background: #f3e0cf;
+            border-radius: 4px;
+        }
+        /* 用途卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1.6rem;
+            margin: 2.4rem 0;
+        }
+        .usage-card {
+            background: #fefbf8;
+            border-radius: 2rem 0.8rem 2rem 0.8rem;
+            padding: 1.8rem 1.3rem;
+            box-shadow: 0 8px 14px -8px rgba(120, 70, 30, 0.12);
+            transition: all 0.2s ease;
+            border: 1px solid #f7ede2;
+        }
+        .usage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 24px -12px rgba(100, 60, 30, 0.18);
+            border-color: #e4cbb7;
+        }
+        .usage-card .emoji-badge {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 0.6rem;
+        }
+        .usage-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #4d2e1b;
+            margin-bottom: 0.5rem;
+        }
+        .usage-card p {
+            color: #5b3f2c;
+            font-size: 0.94rem;
+            line-height: 1.5;
+        }
+        /* 适合人群 —— 两列布局，带圆角卡片 */
+        .audience-section {
+            margin: 2.8rem 0 2.2rem;
+        }
+        .audience-section h2 {
+            font-weight: 420;
+            font-size: 1.8rem;
+            color: #4d2e1b;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px dotted #dbb594;
+            display: inline-block;
+        }
+        .audience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.4rem;
+        }
+        @media (max-width: 600px) {
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-card h1 {
+                font-size: 2rem;
+            }
+            .hero-card .sub {
+                max-width: 100%;
+            }
+        }
+        .audience-item {
+            background: #ffffffd9;
+            border-radius: 1.6rem 0.6rem 1.6rem 0.6rem;
+            padding: 1.2rem 1.4rem;
+            box-shadow: 0 4px 10px rgba(90, 50, 20, 0.04);
+            border: 1px solid #f6e6d8;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+        .audience-item .label {
+            background: #dbb594;
+            color: #2d1a0c;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            white-space: nowrap;
+            margin-top: 0.1rem;
+        }
+        .audience-item .desc {
+            color: #3d2a1a;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        /* 自然链接段落 */
+        .link-paragraph {
+            background: #fffbf7;
+            border-radius: 2.2rem 1rem 2.2rem 1rem;
+            padding: 1.8rem 2.2rem;
+            margin: 2.4rem 0 1.6rem;
+            box-shadow: 0 6px 18px rgba(80, 45, 20, 0.06);
+            font-size: 1.02rem;
+            line-height: 1.7;
+            color: #3d2a1a;
+        }
+        .link-paragraph a {
+            color: #965e34;
+            text-decoration: none;
+            font-weight: 450;
+            background: #f3e2d2;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            transition: background 0.15s, color 0.15s;
+            border: 1px solid transparent;
+        }
+        .link-paragraph a:hover {
+            background: #e0c4ab;
+            border-color: #b68762;
+            color: #2d1a0c;
+        }
+        /* FAQ 摘要 — 简约 */
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0 1rem;
+        }
+        .faq-item {
+            background: #ffffffd9;
+            border-radius: 1.2rem;
+            padding: 0.8rem 1.4rem 0.8rem 1.8rem;
+            flex: 1 1 180px;
+            box-shadow: 0 2px 6px rgba(70, 40, 15, 0.04);
+            border-left: 5px solid #dbb594;
+        }
+        .faq-item .q {
+            font-weight: 500;
+            color: #4d2e1b;
+            font-size: 0.94rem;
+            margin-bottom: 0.15rem;
+        }
+        .faq-item .a {
+            color: #5b3f2c;
+            font-size: 0.88rem;
+        }
+        /* 脚注 */
+        .footnote {
+            margin-top: 3rem;
+            color: #6b4d33;
+            font-size: 0.85rem;
+            text-align: center;
+            opacity: 0.75;
+            border-top: 1px solid #dbb59488;
+            padding-top: 1.5rem;
+        }
+        .footnote a {
+            color: #6b4d33;
+            text-decoration: underline wavy #dbb594 1px;
+            text-underline-offset: 4px;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- 主视觉卡片 -->
+    <div class="hero-card">
+        <h1>
+            jiuyou
+            <span class="small-note">对照·查询·延伸</span>
+        </h1>
+        <div class="sub">
+            一个可以慢慢翻看、随手比对的地方 —— 没有浮夸的入口，只有安静的页面。
+        </div>
+        <!-- 介绍段落：日常查询与对照 -->
+        <div class="intro-text">
+            <p>有时只是想查一个词、一组编号、一段描述，不需要醒目的弹窗，也不需要每一步都被引导。在 <a href="https://m-index-jiuyou.com">jiuyou</a> 的页面上，信息以最朴素的方式陈列：你可以左右对照，也可以顺着某一行延伸出去，读一点背景。它更适合那些已经知道要找什么、或者只是想随意浏览的人。</p>
+            <p>页面结构偏向克制，没有复杂的层级，主要就是内容本身。如果你习惯在翻阅时保持自己的节奏，大概会觉得这里的气息是顺的。</p>
+        </div>
+    </div>
+
+    <!-- 用途卡片：日常场景 -->
+    <div class="card-grid">
+        <div class="usage-card">
+            <span class="emoji-badge">🔍</span>
+            <h3>日常查询</h3>
+            <p>打开页面，直接看到信息主体。不用等待加载 sidebar 或弹窗，适合快速定位关键词或编号。</p>
+        </div>
+        <div class="usage-card">
+            <span class="emoji-badge">📋</span>
+            <h3>对照阅读</h3>
+            <p>条目并列呈现，视线可以自然左右移动。对比差异、参照版本，比切换标签页更直觉。</p>
+        </div>
+        <div class="usage-card">
+            <span class="emoji-badge">🌱</span>
+            <h3>延伸浏览</h3>
+            <p>不强制跳转，不打断思路。从一个条目出发，顺着关联内容慢慢往下读，像翻一本纸页手册。</p>
+        </div>
+        <div class="usage-card">
+            <span class="emoji-badge">🧩</span>
+            <h3>片段收集</h3>
+            <p>偶尔复制一段、记一个引用。没有复杂的权限提示，页面本身就像一张干净的工作台。</p>
+        </div>
+    </div>
+
+    <!-- 适合人群 -->
+    <div class="audience-section">
+        <h2>适合这样使用的人</h2>
+        <div class="audience-grid">
+            <div class="audience-item">
+                <span class="label">研究者</span>
+                <span class="desc">需要反复核对细节，不希望页面干扰注意力。</span>
+            </div>
+            <div class="audience-item">
+                <span class="label">爱好者</span>
+                <span class="desc">带着兴趣浏览，偶尔停下来记一笔，节奏自己控制。</span>
+            </div>
+            <div class="audience-item">
+                <span class="label">整理者</span>
+                <span class="desc">习惯把信息平铺开，再慢慢归纳。页面结构对整理友好。</span>
+            </div>
+            <div class="audience-item">
+                <span class="label">随意翻阅者</span>
+                <span class="desc">没有特定目标，只是想在内容里逛一逛，不被催促。</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 -->
+    <div class="link-paragraph">
+        如果你之前用过类似的信息页面，大概会发现 <a href="https://m-index-jiuyou.com">jiuyou</a> 在排版上留了更多空白，字体也偏大一点 —— 不是所有内容都需要挤在一起。偶尔需要回溯某个条目时，浏览器的历史记录就够用了，页面本身不额外加追踪或收藏按钮。这种风格可能不算新潮，但对于经常需要长时间面对屏幕的人来说，少一些视觉负担总是好的。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="q">页面内容会频繁更新吗？</div>
+            <div class="a">更新节奏由维护者决定，通常以补充和修正为主，没有固定的推送周期。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">移动端看起来怎么样？</div>
+            <div class="a">卡片和文字都做了响应式适配，竖屏阅读时依然舒适，字号不会突然变小。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">需要注册或登录吗？</div>
+            <div class="a">不需要。所有内容直接可见，没有会员区域或隐藏模块。</div>
+        </div>
+    </div>
+
+    <!-- 脚注 -->
+    <div class="footnote">
+        <span>一个偏向安静查阅的页面 · </span>
+        <a href="https://m-index-jiuyou.com">jiuyou</a>
+    </div>
+</div>
+</body>
+</html>
